@@ -1,7 +1,7 @@
 import Home from './pages/Home'
 import Layout from './pages/layout'
 import Dashboard from './pages/Dashboard'
-import WriteArticle from './pages/writeArticle'
+import WriteArticle from './pages/WriteArticle'
 import BlogTitles from './pages/BlogTitles'
 import RemoveBackground from './pages/RemoveBackground'
 import RemoveObject from './pages/RemoveObject'
@@ -13,6 +13,7 @@ import Community from './pages/Community'
 import { useEffect } from 'react'
 import { useAuth } from '@clerk/clerk-react'
 
+import {Toaster} from 'react-hot-toast'
 const App = () => {
 
   const {getToken} = useAuth();
@@ -22,6 +23,7 @@ const App = () => {
   })
   return (
     <div>
+      <Toaster/>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/ai' element={<Layout/>}>

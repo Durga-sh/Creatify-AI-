@@ -2,8 +2,13 @@ import express from "express";
 import { auth } from "../middleware/auth.js";
 import { generateArticle, generateBlogTitle, generateImage, removeImageBackground, removeImageObject, resumeReview } from "../controllers/aiController.js";
 const aiRouter = express.Router();
+import { upload } from '../config/multer.js';
+
+
 
 aiRouter.post("/generate-article" , auth , generateArticle)
+
+
 aiRouter.post("/generate-blog-title" , auth , generateBlogTitle)
 aiRouter.post("/generate-image" , auth , generateImage)
 aiRouter.post("/remove-image-background" , upload.single('image'),auth , removeImageBackground)

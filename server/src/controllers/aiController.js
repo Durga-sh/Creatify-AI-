@@ -6,7 +6,6 @@ import axios from "axios";
 import { v2 as cloudinary } from "cloudinary";
 
 import fs from 'fs'
-import pdf from 'pdf-parse/lib/pdf-parse.js'
 
 
 const AI = new OpenAI({
@@ -211,6 +210,7 @@ export const resumeReview = async (req, res)=>{
             return res.json({success: false, message: "Resume file size exceeds allowed size (5MB)."})
         }
 
+        const pdf = (await import('pdf-parse')).default;
         const dataBuffer = fs.readFileSync(resume.path)
         const pdfData = await pdf(dataBuffer)
 
